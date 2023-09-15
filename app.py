@@ -6,19 +6,19 @@ from extensions import APIException, CryptoConverter
 bot = telebot.TeleBot(TOKEN)
 
 @bot.message_handler(commands=['menu'])
-def main_menuu(message):
+def main_menu(message):
     bot.send_message(message.chat.id, main_menu)
 
 @bot.message_handler(commands=['start'])
-def startt(message):
+def start(message):
     bot.send_message(message.chat.id, help + '\n /menu')
 
 @bot.message_handler(commands=['help'])
-def helpp(message):
+def help(message):
     bot.send_message(message.chat.id, help + '\n /menu')
 
 @bot.message_handler(commands=['values'])
-def valuess(message):
+def values(message):
     bot.send_message(message.chat.id, 'ДОСТУПНЫ СЛЕДУЮЩИЕ ВАЛЮТЫ:')
     for i in values:
         bot.send_message(message.chat.id, i + ' ' + values[i] )
