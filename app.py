@@ -6,19 +6,19 @@ from extensions import APIException, CryptoConverter
 bot = telebot.TeleBot(TOKEN)
 
 @bot.message_handler(commands=['menu'])
-def main_menu(message):
+def main_menuu(message):
     bot.send_message(message.chat.id, main_menu)
 
 @bot.message_handler(commands=['start'])
-def start(message):
+def startt(message):
     bot.send_message(message.chat.id, help + '\n /menu')
 
 @bot.message_handler(commands=['help'])
-def help(message):
+def helpp(message):
     bot.send_message(message.chat.id, help + '\n /menu')
 
 @bot.message_handler(commands=['values'])
-def values(message):
+def valuess(message):
     bot.send_message(message.chat.id, 'ДОСТУПНЫ СЛЕДУЮЩИЕ ВАЛЮТЫ:')
     for i in values:
         bot.send_message(message.chat.id, i + ' ' + values[i] )
@@ -33,7 +33,7 @@ def convert_result(message: telebot.types.Message):
             raise APIException('Слишком много или слишком мало параметров')
 
         base, quote, amount = val
-        result = CryptoConverter.get_prise(base, quote, amount)
+        result = CryptoConverter.convert(base, quote, amount)
     except APIException as e:
         bot.reply_to(message, f'Ошибка пользователя.\n {e}')
     except Exception as e:
@@ -44,7 +44,6 @@ def convert_result(message: telebot.types.Message):
         bot.send_message(message.chat.id, "/menu")
 
 bot.polling()
-
 
 
 
