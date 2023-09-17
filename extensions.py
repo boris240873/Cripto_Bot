@@ -9,7 +9,7 @@ class APIException(Exception):
 
 class CryptoConverter:
     @staticmethod
-    def get_prise(base: str, quote: str, amount: float):
+    def convert(base: str, quote: str, amount: str):
 
         if base == quote:
             raise APIException(f'Не удалось перевести одинаковые валюты: {base}-{quote}')
