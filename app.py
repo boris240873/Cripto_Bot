@@ -9,6 +9,10 @@ bot = telebot.TeleBot(TOKEN)
 def main_menuu(message):
     bot.send_message(message.chat.id, main_menu)
 
+@bot.message_handler(content_types=['voice', ])
+def repeat(message: telebot.types.Message):
+    bot.send_message(message.chat.id, 'У тебя очень красивый голос')
+
 @bot.message_handler(commands=['start'])
 def startt(message):
     bot.send_message(message.chat.id, help + '\n /menu')
